@@ -1,9 +1,5 @@
+# Create a Token
 
-```markdown
-# MyToken
-
-## Project Title
-Create a Token
 
 ## Description
 MyToken is a basic implementation of an ERC20-like token on the Ethereum blockchain. This smart contract allows for the minting and burning of tokens, which can be used as a foundation for more complex token interactions and applications. The token is named "META" with the abbreviation "MTA".
@@ -14,7 +10,7 @@ MyToken is a basic implementation of an ERC20-like token on the Ethereum blockch
 To get started with MyToken using Remix Ethereum IDE, follow these steps:
 
 1. **Open Remix:**
-   Go to [Remix IDE](https://remix.ethereum.org).
+   - Go to [Remix IDE](https://remix.ethereum.org).
 
 2. **Create a New File:**
    - In the Remix IDE, create a new file named `MyToken.sol`.
@@ -44,20 +40,20 @@ To get started with MyToken using Remix Ethereum IDE, follow these steps:
          // The "balances" mapping links Ethereum addresses to their respective token balances. Ethereum addresses act as unique identifiers for users on the network. This mapping allows efficient storage and retrieval of token balances for each address.
 
          // mint function
-         function mint (address _address, uint _value) public {
+         function mint(address _address, uint _value) public {
            totalSupply += _value;
            balances[_address] += _value;
          }
-         // The "Mint" function lets the contract owner create new tokens and assign them to a specified address. It takes two parameters: "_address," the recipient address, and "_value," the number of tokens to mint. This function increases the total token supply and credits the minted tokens to the given address.
+         // The "mint" function lets the contract owner create new tokens and assign them to a specified address. It takes two parameters: "_address," the recipient address, and "_value," the number of tokens to mint. This function increases the total token supply and credits the minted tokens to the given address.
          
          // burn function
-         function burn (address _address, uint _value) public {
+         function burn(address _address, uint _value) public {
            if (balances[_address] >= _value) {
               totalSupply -= _value;
               balances[_address] -= _value;
            }
          }
-         // Conversely, the "Burn" function allows token holders to destroy their tokens. It requires two parameters: "_address," the address from which tokens will be burned, and "_value," the number of tokens to burn. This function checks if the sender has enough tokens to burn. If so, it decreases the total token supply and deducts the burned tokens from the specified address's balance.
+         // Conversely, the "burn" function allows token holders to destroy their tokens. It requires two parameters: "_address," the address from which tokens will be burned, and "_value," the number of tokens to burn. This function checks if the sender has enough tokens to burn. If so, it decreases the total token supply and deducts the burned tokens from the specified address's balance.
 
      }
      ```
@@ -69,23 +65,29 @@ To get started with MyToken using Remix Ethereum IDE, follow these steps:
    - In the Remix IDE, navigate to the "Solidity Compiler" tab on the left panel.
    - Select the appropriate compiler version (0.8.18).
    - Click on the "Compile MyToken.sol" button.
-   - *First, let's compile the code. If you choose auto-compile, you don't need to do this manually.*
 
 2. **Deploy the Contract:**
    - After successful compilation, navigate to the "Deploy & Run Transactions" tab.
    - Select the appropriate environment (e.g., JavaScript VM, Injected Web3, or another).
    - Click on the "Deploy" button under the "Deploy" section.
-   - *Under the Solidity compiler, in the deploy and run transactions section, choose the Remix VM (Paris) environment and keep the default settings.
-Press the deploy button and scroll down to find the deployed contract. You'll see all the functions and variables we've discussed: burn, mint, balances, tokenAbbrv, tokenName, and totalSupply.*
 
 3. **Interact with the Contract:**
    - Once deployed, the contract will appear under the "Deployed Contracts" section.
    - You can interact with the contract functions (mint and burn) directly from the Remix UI.
-   - To test the mint function, click the copy button next to the account, paste it into the address field, and set the value to 3000.
-Click the totalSupply button to check if the value is stored. If it's there, the function works correctly.
-Check the balance by pasting the account address and pressing call to see if the balance is updated.
-Test the burn function similarly: paste the account address and enter the value you want to burn. Call the totalSupply function to see if the value is deducted. Check the balance to confirm the deduction.
-Try burning more tokens than the balance. Repeat the process and observe that the balance and total supply do not change, indicating that the contract works correctly.*
+   - To test the mint function:
+     - Click the copy button next to the account address and paste it into the `_address` field.
+     - Set the `_value` field to 3000.
+     - Click the "transact" button to execute the function.
+     - Check the `totalSupply` value to confirm the minting.
+     - Verify the balance of the account by calling the `balances` function with the same address.
+
+   - To test the burn function:
+     - Paste the account address into the `_address` field.
+     - Enter the value you want to burn in the `_value` field.
+     - Click the "transact" button to execute the function.
+     - Check the `totalSupply` value to confirm the burning.
+     - Verify the balance of the account by calling the `balances` function with the same address.
+     - Try burning more tokens than the balance to see that the transaction does not alter the balance or total supply.
 
 With these steps, you should have MyToken deployed and ready to interact with on the Remix Ethereum IDE, allowing you to mint and burn tokens as per your requirements.
 
@@ -94,4 +96,3 @@ In summary, we've dissected the code, uncovering how tokens are created and mana
 
 ## License
 This project is licensed under the MIT License.
-```
